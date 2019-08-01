@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>Pushover_Test</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Pushover">
+      <HintPath>..\Pushover\bin\Debug\netcoreapp2.1\Pushover.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
