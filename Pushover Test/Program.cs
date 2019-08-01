@@ -7,8 +7,20 @@ namespace Pushover_Test
     {
         static void Main(string[] args)
         {
-            PushoverApi api = new PushoverApi("tokey");
-            bool result =  api.Send("u17yyoz2uotorj2nitzpyqp2dpbt92", "hello world");
+            PushoverApi api = new PushoverApi("token");
+
+            PushoverMessage message = new PushoverMessage()
+            {
+                Title = "title",
+                Message = "message",
+                Priority = Priority.High,
+                Sound = "magic",
+                Url = "https://www.github.com",
+                UrlTitle = "Github",
+            };
+
+            bool result = api.Send("token", message);
+            Console.Read();
         }
     }
 }
