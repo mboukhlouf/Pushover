@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Pushover">
-      <HintPath>..\Pushover\bin\Debug\netcoreapp2.1\Pushover.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Pushover\Pushover.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,31 +7,31 @@ using System.IO;
 
 namespace Pushover
 {
-    public class PushoverApi
+    public class PushoverClient
     {
-        private readonly String apiUrl = "https://api.pushover.net/1/messages.xml";
-        private readonly String validateUrl = "https://api.pushover.net/1/users/validate.xml";
-        private readonly String soundsUrl = "https://api.pushover.net/1/sounds.xml?token=%TOKEN%";
+        private readonly string apiUrl = "https://api.pushover.net/1/messages.xml";
+        private readonly string validateUrl = "https://api.pushover.net/1/users/validate.xml";
+        private readonly string soundsUrl = "https://api.pushover.net/1/sounds.xml?token=%TOKEN%";
 
-        public String Token { get; set; }
+        public string Token { get; set; }
 
-        public PushoverApi()
+        public PushoverClient()
         {
         }
 
-        public PushoverApi(String token)
+        public PushoverClient(string token)
         {
             Token = token;
         }
 
-        public bool Send(String user, String message)
+        public bool Send(string user, string message)
         {
             return Send(user, new PushoverMessage(message));
         }
 
-        public bool Send(String user, PushoverMessage message)
+        public bool Send(string user, PushoverMessage message)
         {
-            String devices = "";
+            string devices = "";
             for (int i = 0; i < message.Device.Count; i++)
             {
                 devices += message.Device[i];
@@ -54,7 +54,7 @@ namespace Pushover
                 { "timestamp ", message.Timestamp },
             };
 
-            String response;
+            string response;
             using (var webClient = new WebClient())
             {
                 try
@@ -78,14 +78,14 @@ namespace Pushover
             XmlDocument document = new XmlDocument();
             document.LoadXml(response);
 
-            String status = document.SelectSingleNode("/response/status").InnerText;
+            string status = document.SelectSingleNode("/response/status").InnerText;
             return status == "1";
         }
 
-        public String[] GetSounds()
+        public string[] GetSounds()
         {
-            String url = soundsUrl.Replace("%TOKEN%", Token);
-            String response;
+            string url = soundsUrl.Replace("%TOKEN%", Token);
+            string response;
             using (WebClient webClient = new WebClient())
             {
                 response = webClient.DownloadString(url);
@@ -96,7 +96,7 @@ namespace Pushover
 
             XmlNodeList soundsNodes = document.SelectNodes("/response/sounds/*");
 
-            String[] sounds = new String[soundsNodes.Count];
+            string[] sounds = new string[soundsNodes.Count];
             for (int i = 0; i < sounds.Length; i++)
             {
                 sounds[i] = soundsNodes[i].Name;
@@ -106,7 +106,7 @@ namespace Pushover
             return sounds;
         }
 
-        public bool Validate(String user, String device = "")
+        public bool Validate(string user, string device = "")
         {
             var parameters = new NameValueCollection()
             {
@@ -115,7 +115,7 @@ namespace Pushover
                 { "device", device }
             };
 
-            String response;
+            string response;
             using (var webClient = new WebClient())
             {
                 try
@@ -139,7 +139,7 @@ namespace Pushover
             XmlDocument document = new XmlDocument();
             document.LoadXml(response);
 
-            String status = document.SelectSingleNode("/response/status").InnerText;
+            string status = document.SelectSingleNode("/response/status").InnerText;
             return status == "1";
         }
     }

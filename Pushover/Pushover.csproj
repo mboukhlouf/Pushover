@@ -1,7 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Copyright>Copyright © Mohammed Boukhlouf 2020</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>M-Boukhlouf</Authors>
+    <PackageProjectUrl>https://github.com/M-Boukhlouf/Pushover</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/M-Boukhlouf/Pushover</RepositoryUrl>
   </PropertyGroup>
-
+  
 </Project>

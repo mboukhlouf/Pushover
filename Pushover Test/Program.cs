@@ -7,7 +7,7 @@ namespace Pushover_Test
     {
         static void Main(string[] args)
         {
-            PushoverApi api = new PushoverApi("token");
+            PushoverClient api = new PushoverClient("token");
 
             PushoverMessage message = new PushoverMessage()
             {
