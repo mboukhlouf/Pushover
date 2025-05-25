@@ -22,6 +22,11 @@ namespace Pushover
         public string Attachment { get; set; }
 
         /// <summary>
+        /// Attachment in base64 encoding
+        /// </summary>
+        public string AttachmentBase64 { get; set; } = null;
+
+        /// <summary>
         /// The list of devices
         /// </summary>
         public List<string> Device { get; } = new List<string>();

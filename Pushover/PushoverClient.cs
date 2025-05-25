@@ -52,6 +52,7 @@ namespace Pushover
                 { "priority", ((int)message.Priority).ToString()},
                 { "sound", message.Sound },
                 { "timestamp ", message.Timestamp },
+                { "attachment_base64", message.AttachmentBase64 }
             };
 
             string response;
